@@ -47,17 +47,19 @@ which doesn’t affect on the agent tool on the server
 ```
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ crontab -l
 ```
+
+```
 * * * * * ~/aws-scripts-mon/mon-put-instance-data.pl --mem-util --mem-used --mem-avail --disk-space-util --disk-path=/ --from-cron
+```
+-> Make sure that if the crontab is set up properly to monitor the server periodically 
+-> Currently, the path where the monitoring tool is installed is well set 
 
--> 주기적으로 모니터링 역할을 할 수 있도록 crontab이 잘 설정되어있는지 확인함 
--> 현재 모니터링툴이 설치되어있는 경로나 모니터링을 해야하는 위치가 잘 설정되어 있음
-
-*diskpath는 수정 혹은 추가할 수 있음. EX): --disk-path=/cont01 -disk-path=/cont02
+*You can always edit or add diskpath EX): --disk-path=/cont01 -disk-path=/cont02
 
 ```
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ sudo service crond restart
 ```
--> crontab 서비스를 재시작하여 서비스를 활성화 시켜줌 
+-> Restart crontab service to activate it 
 
 ```
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
@@ -73,13 +75,15 @@ perl: warning: Falling back to the standard locale ("C").
 Successfully reported metrics to CloudWatch. Reference Id: 07297645-facc-4f35-9550-767c00a94d5e
 ```
 
--> 해당 실행 명령어는 설치된 모니터링 툴이 잘 작동하는지를 확인하는 명령어로 결과가 다음과 같다면('Successfully reported metrics to CloudWatch') 
-성공적으로 설치가 된 것으로 CloudWatch 대시보드에서 메트릭값(메모리, 디스크)을 확인해야함 
+-> The execution command is a command that checks whether the installed monitoring tool works well, 
+and if the result is as follows ("Successfully reported metrics to CloudWatch").
+The installation was successful and you should check the metric values (memory, disk) in the CloudWatch dashboard 
 
-*위의 명령어를 입력하였는데 결과가 'EC2 has no IAM role' 이라면 EC2 대시보드에서 인스턴스의 IAM role을 설정해주면 됨.
-방법은 아래와 같음 
+* When you enter the above command and if the result is "EC2 has no IAM role", you must check the instance's IAM role in the EC2 dashboard
 
-1. 해당 인스턴스를 선택 후 오른쪽 마우스 클릭으로 보안 항목에서 IAM role 수정하기를 선택
+The method is as follows: 
+
+1. After selecting the instance, right-click and select Modify IAM role in the security category
 
 
 2. 인스턴스에 원하는 IAM role을 부여해준 후 저장
