@@ -11,19 +11,19 @@
 ```
 
 ```
-[ec2-user@ip-10-100-10-100 ~]$ ll
+[ec2-user@ip-10-x-x-x ~]$ ll
 total 281072
 drwxrwxr-x 2 ec2-user ec2-user      4096 Nov 28 15:44 aws-scripts-mon
 ```
 -> Monitoring tool has been installed properly 
 
 ```
-[ec2-user@ip-10-100-10-100 ~]$ cd aws-scripts-mon/
+[ec2-user@ip-10-x-x-x ~]$ cd aws-scripts-mon/
 ```
 -> Move to the directory which has the CloudWatch Agent tool 
 
 ```
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ ll
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ ll
 total 96
 -r--r--r-- 1 ec2-user ec2-user 17021 Mar  6  2015 AwsSignatureV4.pm
 -r--r--r-- 1 ec2-user ec2-user 22487 Mar  6  2015 CloudWatchClient.pm
@@ -40,12 +40,12 @@ but just needs to set the specific IAM role to the EC2 instance, so it is necess
 which doesn’t affect on the agent tool on the server 
 
 ```
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ mv awscreds.conf old_awscreds.conf
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ mv awscreds.conf old_awscreds.conf
 ```
 -> Moved the original access file which includes Access Key info to a new file 
 
 ```
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ crontab -l
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ crontab -l
 ```
 
 ```
@@ -57,12 +57,12 @@ which doesn’t affect on the agent tool on the server
 *You can always edit or add diskpath EX): --disk-path=/cont01 -disk-path=/cont02
 
 ```
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ sudo service crond restart
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ sudo service crond restart
 ```
 -> Restart crontab service to activate it 
 
 ```
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
 	LANGUAGE = (unset),
@@ -81,7 +81,7 @@ The installation was successful and you should check the metric values (memory, 
 
 * When you enter the above command and if the result is "EC2 has no IAM role", you must check the instance's IAM role in the EC2 dashboard
 
-The method is as follows in AWS EC2 dashboard: 
+The method is as follows in the AWS EC2 dashboard: 
 
 1. After selecting the instance, right-click and select Modify IAM role in the security category
 
@@ -92,8 +92,9 @@ The method is as follows in AWS EC2 dashboard:
 3. Check if the IAM role has been properly granted to the instance
 
 4. Check the result after re-entering the monitoring tool verify command
-[ec2-user@ip-10-100-10-100 aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
-
+```
+[ec2-user@ip-10-x-x-x aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
+```
 -> If the value is as follows, it means that it has been successfully set. Check the Metric value on the CloudWatch dashboard again, and if the memory and disk values of the instance exist, it's completed now 
 
 ```
