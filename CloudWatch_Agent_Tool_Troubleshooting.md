@@ -81,12 +81,12 @@ The installation was successful and you should check the metric values (memory, 
 
 * When you enter the above command and if the result is "EC2 has no IAM role", you must check the instance's IAM role in the EC2 dashboard
 
-The method is as follows: 
+The method is as follows in AWS EC2 dashboard: 
 
 1. After selecting the instance, right-click and select Modify IAM role in the security category
 
 
-2. Safe after granting the IAM role to the instance
+2. Save after granting the IAM role to the instance
 
 
 3. Check if the IAM role has been properly granted to the instance
