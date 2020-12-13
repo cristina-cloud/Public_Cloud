@@ -6,7 +6,7 @@
 [BASTION:ec2-user@ip-10-x-x-x ~]$ 
 -> Connect to the server which isnt working through a bastion server 
 
-[BASTION:ec2-user@ip-10-100-10-14 ~]$ ssh -i key-renaultsamsungm.pem ec2-user@10.100.10.100
+[BASTION:ec2-user@ip-10-x-x-x ~]$ ssh -i key-xxx.pem ec2-user@10.x.x.x
 -> Connect to the server with the key.pem file 
 ```
 
@@ -98,5 +98,5 @@ The method is as follows in the AWS EC2 dashboard:
 -> If the value is as follows, it means that it has been successfully set. Check the Metric value on the CloudWatch dashboard again, and if the memory and disk values of the instance exist, it's completed now 
 
 ```
-Successfully reported metrics to CloudWatch. Reference Id: 07297645-facc-4f35-9550-767c00a94d5e
+"Successfully reported metrics to CloudWatch. Reference Id: 07297645-facc-4f35-9550-767c00a94d5e"
 ```
