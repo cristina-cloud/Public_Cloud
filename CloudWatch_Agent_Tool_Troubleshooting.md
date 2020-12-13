@@ -42,7 +42,7 @@ which doesn’t affect on the agent tool on the server
 ```
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ mv awscreds.conf old_awscreds.conf
 ```
--> 기존에 키를 포함하고 있는 access 파일을 다른 곳으로 옮겨줌 
+-> Moved the original access file which includes Access Key info to a new file 
 
 ```
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ crontab -l
@@ -86,13 +86,16 @@ The method is as follows:
 1. After selecting the instance, right-click and select Modify IAM role in the security category
 
 
-2. 인스턴스에 원하는 IAM role을 부여해준 후 저장
+2. Safe after granting the IAM role to the instance
 
 
-3. 인스턴스에 IAM role이 잘 부여됐는지 확인
+3. Check if the IAM role has been properly granted to the instance
 
-
-4. 모니터링 툴 verify 명령어 다시 입력 후 결과 확인 
+4. Check the result after re-entering the monitoring tool verify command
 [ec2-user@ip-10-100-10-100 aws-scripts-mon]$ ./mon-put-instance-data.pl --mem-used-incl-cache-buff --mem-util --mem-used --mem-avail
 
--> 값이 아래와 같으면 성공적으로 설정이 되었다는 의미로 CloudWatch 대시보드의 Metric 값을 다시 한번 확인하고 해당 인스턴스의 memory 및 disk 값이 존재한다면 완료
+-> If the value is as follows, it means that it has been successfully set. Check the Metric value on the CloudWatch dashboard again, and if the memory and disk values of the instance exist, it's completed now 
+
+```
+Successfully reported metrics to CloudWatch. Reference Id: 07297645-facc-4f35-9550-767c00a94d5e
+```
