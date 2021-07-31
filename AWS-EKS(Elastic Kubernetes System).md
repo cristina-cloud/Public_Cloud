@@ -4,7 +4,6 @@ Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that you can
 
 https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html 
 
-
 #### Kubernetes nodes: #### 
 
 EKS itself becomes the master node called the Control Plane and the EC2 instances become the worker nodes called the Data Plane where the actual container images run.
@@ -68,6 +67,7 @@ Default region name [None]: ap-northeast-2
 Default output format [None]:
 ``` 
 -> Create a new user to manage EKS using IAM service 
+ 
 -> Access key ID and secret access key are required for AWS cli to set up credentials to execute commands for building EKS service
  
 ## <Install EKS cluster and nodes> ##
