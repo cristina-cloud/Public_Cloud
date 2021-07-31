@@ -143,7 +143,7 @@ Default output format [None]:
 2021-07-28 08:33:47 [ℹ]  kubectl command should work with "/home/ec2-user/.kube/config", try 'kubectl get nodes'
 2021-07-28 08:33:47 [✔]  EKS cluster "test" in "ap-northeast-2" region is ready
 ```
--> It takes at least 15 to upto 30mins to get done and when you get a meesage that "EKS cluster "cluster name" in "region" is ready, then it's finished. 
+-> It takes at least 15 to upto 30mins to get done and when you get a meesage that "EKS cluster "cluster name" in "region" is ready, then you are ready to go 
  
 ## <Verification> ##
 
