@@ -1,24 +1,22 @@
-What is Amazon EKS?
+# What is Amazon EKS? #
 
 Amazon Elastic Kubernetes Service (Amazon EKS) is a managed service that you can use to run Kubernetes on AWS without needing to install, operate, and maintain your own Kubernetes control plane or nodes. 
 https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html 
 
-Kubernetes nodes : 
+
+#### Kubernetes nodes: #### 
 
 EKS itself becomes the master node called the Control Plane and the EC2 instances become the worker nodes called the Data Plane where the actual container images run.
 
-How to create AWS EKS? 
+### How to create AWS EKS? ###
 
-*Create an AWS EC2 instance and install the eks on the instance*
-
-Launch using eksctl 
-
-*Install an AWS EC2 instance and proceed the EKS installation using the CLI terminal. 
+###### *Create an AWS EC2 instance and install the eks on the instance ######
+###### *Install an AWS EC2 instance and proceed the EKS installation using the CLI terminal ###### 
  
-<Prerequisites> 
+## <Prerequisites> ##
 https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 
- 1. Install the eksctl command line utility
+#### 1. Install the eksctl command line utility ###
 ```
 [ec2-user@ip-xxxxxxxxx ~]$ curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 [ec2-user@ip-xxxxxxxxx ~]$ sudo mv /tmp/eksctl /usr/local/bin/
@@ -26,7 +24,7 @@ https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 0.58.0
 ```
  
-2. Install the kubectl command line utility 
+### 2. Install the kubectl command line utility ###
 ```
 [ec2-user@ip-172-31-15-158 ~]$ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -42,7 +40,7 @@ https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 Client Version: v1.20.4-eks-6b7464
 ```
  
-3. Install aws-iam-authenticator
+### 3. Install aws-iam-authenticator ###
 ```
 [ec2-user@ip-xxxxxxxxx ~]$ curl -o aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -58,8 +56,8 @@ Client Version: v1.20.4-eks-6b7464
 -> Amazon EKS uses IAM to provide authentication to your Kubernetes cluster through the AWS IAM authenticator for Kubernetes.
 https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html
  
-4. AWS configure
-* Before proceeding this process, ass a new user and permission fo EKS
+### 4. AWS configure ###
+###### *Before proceeding this process, ass a new user and permission fo EKS ######
  
 ```
 [ec2-user@ip-xxxxxxxxx ~]$ aws configure
@@ -71,7 +69,7 @@ Default output format [None]:
 -> Create a new user to manage EKS using IAM service 
 -> Access key ID and secret access key are required for AWS cli to set up credentials to execute commands for building EKS service
  
-<Install EKS cluster and nodes> 
+## <Install EKS cluster and nodes> ##
 ```
 [ec2-user@ip-xxxxxxxxx ~]$ eksctl create cluster --name test --region ap-northeast-2 --with-oidc --ssh-access --ssh-public-key eks-test --managed
 2021-07-28 08:08:29 [ℹ]  eksctl version 0.58.0
@@ -146,9 +144,9 @@ Default output format [None]:
 ```
 -> It takes at least 15 to upto 30mins to get done and when you get a meesage that "EKS cluster "cluster name" in "region" is ready, then it's finished. 
  
-<Verification>
+## <Verification> ##
 
-1. Checking cluster nodes and Amazon EC2 nodes
+### 1. Checking cluster nodes and Amazon EC2 nodes ###
 ```
  [ec2-user@ip-xxxxxxxxxxxx ~]$ kubectl get nodes -o wide
 NAME                                                STATUS   ROLES    AGE     VERSION              INTERNAL-IP      EXTERNAL-IP    OS-IMAGE         KERNEL-VERSION                CONTAINER-RUNTIME
@@ -156,7 +154,7 @@ ip-xxxxxxxxxxxx.ap-northeast-2.compute.internal     Ready    <none>   5m38s   v1
 ip-xxxxxxxxxxxx.ap-northeast-2.compute.internal   Ready    <none>   5m34s   v1.20.4-eks-6b7464   xxxxxxxxxxxx   xxxxxxxxxxxx   Amazon Linux 2   5.4.129-63.229.amzn2.x86_64   docker://19.3.13
 ```
 
-2. Checking current running Kubernetes system information on the cluster 
+### 2. Checking current running Kubernetes system information on the cluster ###
 ```
 [ec2-user@ip-xxxxxxxxxxxx ~]$ kubectl get pod --all-namespaces
 NAMESPACE     NAME                      READY   STATUS    RESTARTS   AGE
