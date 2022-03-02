@@ -26,7 +26,7 @@ https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
  
 ### 2. Install the kubectl command line utility ###
 ```
-[ec2-user@ip-172-31-15-158 ~]$ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl
+[ec2-user@ip-xxxxxxxxxx ~]$ curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.20.4/2021-04-12/bin/linux/amd64/kubectl
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 38.3M  100 38.3M    0     0  8705k      0  0:00:04  0:00:04 --:--:-- 9516k
